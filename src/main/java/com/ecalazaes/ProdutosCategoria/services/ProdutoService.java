@@ -3,6 +3,7 @@ package com.ecalazaes.ProdutosCategoria.services;
 import com.ecalazaes.ProdutosCategoria.entities.Produto;
 import com.ecalazaes.ProdutosCategoria.repositories.CategoriaRepository;
 import com.ecalazaes.ProdutosCategoria.repositories.ProdutoRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.server.ResponseStatusException;
@@ -45,4 +46,14 @@ public class ProdutoService {
         }
     }
 
-}
+    public Produto updateProduto(Long id, Produto produto) {
+        return produtoRepository.findById(id)
+                .map(produtoEncontrado -> {
+                    produtoEncontrado.setNome(produto.getNome());
+                    produtoEncontrado.setDescricao(produto.getDescricao());
+                    produtoEncontrado.setPreco(produto.getPreco());
+                    return produtoRepository.save(produtoEncontrado);
+                        })
+                .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado com o ID: " + id));
+        }
+    }

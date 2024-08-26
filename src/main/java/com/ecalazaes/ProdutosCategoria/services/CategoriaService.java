@@ -2,6 +2,7 @@ package com.ecalazaes.ProdutosCategoria.services;
 
 import com.ecalazaes.ProdutosCategoria.entities.Categoria;
 import com.ecalazaes.ProdutosCategoria.repositories.CategoriaRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -37,5 +38,14 @@ public class CategoriaService {
         } else {
             throw new NoSuchElementException("Categoria não encontrada com o ID: " + id);
         }
+    }
+
+    public Categoria updateCategoria(Long id, Categoria categoria){
+        return categoriaRepository.findById(id)
+                .map(categoriaEncontrada -> {
+                    categoriaEncontrada.setDescricao(categoria.getDescricao());
+                    return categoriaRepository.save(categoriaEncontrada);
+                })
+                .orElseThrow(() -> new EntityNotFoundException("Categoria não encontrada com o ID: " + id));
     }
 }

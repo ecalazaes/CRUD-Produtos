@@ -1,6 +1,7 @@
 package com.ecalazaes.ProdutosCategoria.controllers;
 
 import com.ecalazaes.ProdutosCategoria.entities.Categoria;
+import com.ecalazaes.ProdutosCategoria.entities.Produto;
 import com.ecalazaes.ProdutosCategoria.services.CategoriaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,4 +42,10 @@ public class CategoriaController {
         categoriaService.deleteCategoriaById(id);
         return ResponseEntity.noContent().build();
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Categoria> updateCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
+        categoria = categoriaService.updateCategoria(id, categoria);
+        return ResponseEntity.ok(categoria);
+    }
+
 }
