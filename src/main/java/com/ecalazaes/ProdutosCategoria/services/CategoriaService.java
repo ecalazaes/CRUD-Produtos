@@ -2,7 +2,9 @@ package com.ecalazaes.ProdutosCategoria.services;
 
 import com.ecalazaes.ProdutosCategoria.entities.Categoria;
 import com.ecalazaes.ProdutosCategoria.repositories.CategoriaRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -18,5 +20,9 @@ public class CategoriaService {
     public List<Categoria> findAllCategorias(){
         return categoriaRepository.findAll();
     }
-    
+
+    public Categoria findCategoriaById(Long id){
+        return categoriaRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Categoria não encontrada com ID: " + id));
+    }
 }
