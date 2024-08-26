@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Repository
 public class ProdutoService {
@@ -34,6 +35,14 @@ public class ProdutoService {
             categoriaRepository.save(produto.getCategoria());
         }
         return produtoRepository.save(produto);
+    }
+
+    public void deleteProdutoById(Long id) {
+        if(produtoRepository.existsById(id)) {
+            produtoRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("Produto não encontrado com o ID: " + id);
+        }
     }
 
 }

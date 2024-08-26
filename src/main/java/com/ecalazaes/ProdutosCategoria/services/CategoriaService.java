@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class CategoriaService {
@@ -28,5 +29,13 @@ public class CategoriaService {
 
     public Categoria saveCategoria(Categoria categoria){
         return categoriaRepository.save(categoria);
+    }
+
+    public void deleteCategoriaById(Long id){
+        if(categoriaRepository.existsById(id)){
+            categoriaRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("Categoria não encontrada com o ID: " + id);
+        }
     }
 }

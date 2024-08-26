@@ -35,4 +35,10 @@ public class CategoriaController {
         Categoria novaCategoria = categoriaService.saveCategoria(categoria);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaCategoria);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCategoriaById(@PathVariable Long id) {
+        categoriaService.deleteCategoriaById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
