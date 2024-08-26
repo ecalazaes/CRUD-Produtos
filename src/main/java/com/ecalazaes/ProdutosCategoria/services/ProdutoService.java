@@ -1,6 +1,7 @@
 package com.ecalazaes.ProdutosCategoria.services;
 
 import com.ecalazaes.ProdutosCategoria.entities.Produto;
+import com.ecalazaes.ProdutosCategoria.repositories.CategoriaRepository;
 import com.ecalazaes.ProdutosCategoria.repositories.ProdutoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
@@ -12,9 +13,11 @@ import java.util.List;
 public class ProdutoService {
 
     private ProdutoRepository produtoRepository;
+    private CategoriaRepository categoriaRepository;
 
-    public ProdutoService(ProdutoRepository produtoRepository) {
+    public ProdutoService(ProdutoRepository produtoRepository, CategoriaRepository categoriaRepository) {
         this.produtoRepository = produtoRepository;
+        this.categoriaRepository = categoriaRepository;
     }
 
     public List<Produto> findAllProdutos() {
@@ -27,6 +30,10 @@ public class ProdutoService {
     }
 
     public Produto saveProduto(Produto produto) {
+        if (produto.getCategoria().getId() == null) {
+            categoriaRepository.save(produto.getCategoria());
+        }
         return produtoRepository.save(produto);
     }
+
 }

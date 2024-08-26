@@ -1,6 +1,7 @@
 package com.ecalazaes.ProdutosCategoria.controllers;
 
 
+import com.ecalazaes.ProdutosCategoria.entities.Categoria;
 import com.ecalazaes.ProdutosCategoria.entities.Produto;
 import com.ecalazaes.ProdutosCategoria.services.ProdutoService;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class ProdutoController {
 
     @PostMapping
     public ResponseEntity<Produto> saveProduto(@RequestBody Produto produto) {
-       Produto novoProduto =  produtoService.saveProduto(produto);
+        Produto novoProduto = produtoService.saveProduto(produto);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
     }
 }

@@ -25,4 +25,8 @@ public class CategoriaService {
         return categoriaRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Categoria não encontrada com ID: " + id));
     }
+
+    public Categoria saveCategoria(Categoria categoria){
+        return categoriaRepository.save(categoria);
+    }
 }

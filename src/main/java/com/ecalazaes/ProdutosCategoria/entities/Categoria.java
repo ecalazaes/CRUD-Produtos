@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,9 +25,9 @@ public class Categoria implements Serializable {
     @Column(name = "categoria_descricao")
     private String descricao;
 
-    @OneToMany(mappedBy = "categoria")
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Produto> produtos = new HashSet<>();
+    private List<Produto> produtos = new ArrayList<>();
 
     public Categoria() {
     }
@@ -52,7 +53,7 @@ public class Categoria implements Serializable {
         this.descricao = descricao;
     }
 
-    public Set<Produto> getProdutos() {
+    public List<Produto> getProdutos() {
         return produtos;
     }
 
