@@ -4,13 +4,9 @@ import com.ecalazaes.ProdutosCategoria.entities.Produto;
 import com.ecalazaes.ProdutosCategoria.repositories.CategoriaRepository;
 import com.ecalazaes.ProdutosCategoria.repositories.ProdutoRepository;
 import com.ecalazaes.ProdutosCategoria.services.exception.ObjectNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Repository
 public class ProdutoService {
