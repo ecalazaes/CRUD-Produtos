@@ -3,6 +3,7 @@ package com.ecalazaes.ProdutosCategoria.controllers;
 import com.ecalazaes.ProdutosCategoria.entities.Categoria;
 import com.ecalazaes.ProdutosCategoria.entities.Produto;
 import com.ecalazaes.ProdutosCategoria.services.CategoriaService;
+import com.ecalazaes.ProdutosCategoria.services.exception.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,12 @@ public class CategoriaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Categoria> findCategoriaById(@PathVariable Long id) {
-        Categoria categoria = categoriaService.findCategoriaById(id);
-        return categoria == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(categoria);
+        try {
+            Categoria categoria = categoriaService.findCategoriaById(id);
+            return ResponseEntity.ok(categoria);
+        } catch (ObjectNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("/save")
@@ -39,13 +44,21 @@ public class CategoriaController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteCategoriaById(@PathVariable Long id) {
-        categoriaService.deleteCategoriaById(id);
-        return ResponseEntity.noContent().build();
-    }
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Categoria> updateCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
-        categoria = categoriaService.updateCategoria(id, categoria);
-        return ResponseEntity.ok(categoria);
+        try {
+            categoriaService.deleteCategoriaById(id);
+            return ResponseEntity.noContent().build();
+        } catch (ObjectNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Categoria> updateCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
+        try {
+            categoriaService.updateCategoria(id, categoria);
+            return ResponseEntity.ok(categoria);
+        } catch (ObjectNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

@@ -45,13 +45,21 @@ public class ProdutoController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteProduto(@PathVariable Long id) {
-        produtoService.deleteProdutoById(id);
-        return ResponseEntity.noContent().build();
+        try {
+            produtoService.deleteProdutoById(id);
+            return ResponseEntity.noContent().build();
+        } catch (ObjectNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @RequestBody Produto produto) {
-        produto = produtoService.updateProduto(id, produto);
-        return ResponseEntity.ok(produto);
+        try {
+            produtoService.updateProduto(id, produto);
+            return ResponseEntity.ok(produto);
+        } catch (ObjectNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
