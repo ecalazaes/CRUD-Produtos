@@ -2,13 +2,13 @@ package com.ecalazaes.ProdutosCategoria.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "tb_categoria")
@@ -19,10 +19,11 @@ public class Categoria implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "categoria_id")
+    @Column(name = "categoria_id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "categoria_descricao")
+    @Column(name = "categoria_descricao", nullable = false)
+    @NotNull
     private String descricao;
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)

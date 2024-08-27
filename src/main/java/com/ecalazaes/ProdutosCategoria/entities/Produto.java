@@ -1,6 +1,7 @@
 package com.ecalazaes.ProdutosCategoria.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -15,16 +16,19 @@ public class Produto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "produto_id", nullable = false)
+    @Column(name = "produto_id", nullable = false, unique = true)
     private Long id;
 
     @Column(name = "produto_nome", nullable = false)
+    @NotNull
     private String nome;
 
     @Column(name = "produto_descricao", nullable = false)
+    @NotNull
     private String descricao;
 
     @Column(name = "produto_preco", nullable = false)
+    @NotNull
     private double preco;
 
     @ManyToOne

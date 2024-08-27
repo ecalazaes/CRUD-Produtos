@@ -31,18 +31,18 @@ public class CategoriaController {
         return categoria == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(categoria);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<Categoria> saveCategoria(@RequestBody Categoria categoria) {
         Categoria novaCategoria = categoriaService.saveCategoria(categoria);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaCategoria);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteCategoriaById(@PathVariable Long id) {
         categoriaService.deleteCategoriaById(id);
         return ResponseEntity.noContent().build();
     }
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Categoria> updateCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
         categoria = categoriaService.updateCategoria(id, categoria);
         return ResponseEntity.ok(categoria);

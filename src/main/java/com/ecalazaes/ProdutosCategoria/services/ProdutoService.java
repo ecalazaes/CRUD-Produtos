@@ -3,6 +3,7 @@ package com.ecalazaes.ProdutosCategoria.services;
 import com.ecalazaes.ProdutosCategoria.entities.Produto;
 import com.ecalazaes.ProdutosCategoria.repositories.CategoriaRepository;
 import com.ecalazaes.ProdutosCategoria.repositories.ProdutoRepository;
+import com.ecalazaes.ProdutosCategoria.services.exception.ObjectNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
@@ -28,7 +29,7 @@ public class ProdutoService {
 
     public Produto findProdutoById(Long id) {
         return produtoRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Produto não encontrado com ID: " + id));
+                .orElseThrow(() -> new ObjectNotFoundException("Produto não encontrado com ID: " + id));
     }
 
     public Produto saveProduto(Produto produto) {
@@ -42,7 +43,7 @@ public class ProdutoService {
         if(produtoRepository.existsById(id)) {
             produtoRepository.deleteById(id);
         } else {
-            throw new NoSuchElementException("Produto não encontrado com o ID: " + id);
+            throw new ObjectNotFoundException("Produto não encontrado com o ID: " + id);
         }
     }
 
@@ -54,6 +55,6 @@ public class ProdutoService {
                     produtoEncontrado.setPreco(produto.getPreco());
                     return produtoRepository.save(produtoEncontrado);
                         })
-                .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado com o ID: " + id));
+                .orElseThrow(() -> new ObjectNotFoundException("Produto não encontrado com o ID: " + id));
         }
     }
