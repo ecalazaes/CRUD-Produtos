@@ -7,6 +7,7 @@ Um Produto pode ter uma Categoria e uma Categoria pode conter vários Produtos.
 
 - **Spring Boot 3.3.3**: Framework principal para construção da API.
 - **JPA & Hibernate**: Para mapeamento objeto-relacional e persistência de dados.
+- **Postman**: Utilizado para testar e validar os endpoints da API.
 - **Banco de Dados H2**: Utilizado para testes e desenvolvimento.
 - **Swagger**: Para documentação interativa dos endpoints da API.
 
