@@ -75,5 +75,29 @@ A aplicação utiliza o banco de dados em memória H2 para testes. Você pode ac
 A API está documentada utilizando Swagger, permitindo que você explore os endpoints e teste as requisições diretamente do navegador.
 
 - URL de acesso: http://localhost:8080/api  
-![Swagger](img/swagger.png)
+<br>![Swagger](img/swagger.png)
 
+## Como Executar
+1. Clone o repositório
+   ```bash
+     https://github.com/ecalazaes/CRUD-Produtos
+   
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd CRUD-Produtos
+  
+3. Execute o projeto:
+   ```bash
+   ./mvnw spring-boot:run
+
+4. Acesse a API no endereço:
+   ```bash
+   http://localhost:8080/produtos
+   ```
+   
+   ```bash
+   http://localhost:8080/categorias
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
