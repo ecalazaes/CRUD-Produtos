@@ -90,7 +90,21 @@ A aplicação utiliza o banco de dados em memória H2 para testes. Você pode ac
    ```bash
    ./mvnw spring-boot:run
 
-4. Acesse a API no endereço:
+4. Configuração no application.properties  
+  - No arquivo src/main/resources/application.properties, insira ou atualize as seguintes propriedades:  
+    ```bash
+    # Configuração do banco H2
+    spring.datasource.url=jdbc:h2:mem:testdb
+    spring.datasource.driverClassName=org.h2.Driver
+    spring.datasource.username=sa
+    spring.datasource.password=
+
+    # Configuração para o console do H2
+    spring.h2.console.enabled=true
+    spring.h2.console.path=/h2-console
+    ```
+
+5. Acesse a API no endereço:
    ```bash
    http://localhost:8080/produtos
    ```
