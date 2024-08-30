@@ -79,7 +79,7 @@ A aplicação utiliza o banco de dados em memória H2 para testes. Você pode ac
 ## Como Executar
 1. Clone o repositório
    ```bash
-     https://github.com/ecalazaes/CRUD-Produtos
+   https://github.com/ecalazaes/CRUD-Produtos
    
 2. Navegue até o diretório do projeto:
    ```bash
