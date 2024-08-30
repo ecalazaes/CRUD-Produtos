@@ -61,7 +61,13 @@ O projeto segue uma arquitetura tradicional em camadas:
     "nome": "Categoria 2"
     }
   ]
-  
+
+## Documentação Swagger
+A API está documentada utilizando Swagger, permitindo que você explore os endpoints e teste as requisições diretamente do navegador.
+
+- URL de acesso: http://localhost:8080/api  
+<br>![Swagger](img/swagger.png)
+
 ## Banco de Dados H2
 A aplicação utiliza o banco de dados em memória H2 para testes. Você pode acessar a interface web do H2 para inspecionar as tabelas e dados persistidos.
 
@@ -69,12 +75,6 @@ A aplicação utiliza o banco de dados em memória H2 para testes. Você pode ac
 - JDBC URL: jdbc:h2:mem:testdb
 - Username: sa
 - Password: (deixe em branco)
-
-## Documentação Swagger
-A API está documentada utilizando Swagger, permitindo que você explore os endpoints e teste as requisições diretamente do navegador.
-
-- URL de acesso: http://localhost:8080/api  
-<br>![Swagger](img/swagger.png)
 
 ## Como Executar
 1. Clone o repositório
