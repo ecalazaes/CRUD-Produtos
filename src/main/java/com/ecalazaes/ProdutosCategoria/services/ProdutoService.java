@@ -4,15 +4,15 @@ import com.ecalazaes.ProdutosCategoria.entities.Produto;
 import com.ecalazaes.ProdutosCategoria.repositories.CategoriaRepository;
 import com.ecalazaes.ProdutosCategoria.repositories.ProdutoRepository;
 import com.ecalazaes.ProdutosCategoria.services.exception.ObjectNotFoundException;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
+@Service
 public class ProdutoService {
 
-    private ProdutoRepository produtoRepository;
-    private CategoriaRepository categoriaRepository;
+    private final ProdutoRepository produtoRepository;
+    private final CategoriaRepository categoriaRepository;
 
     public ProdutoService(ProdutoRepository produtoRepository, CategoriaRepository categoriaRepository) {
         this.produtoRepository = produtoRepository;

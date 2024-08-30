@@ -16,18 +16,18 @@ public class Produto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "produto_id", nullable = false, unique = true)
+    @Column(name = "produto_id", nullable = false, unique = true, length = 11)
     private Long id;
 
-    @Column(name = "produto_nome", nullable = false)
+    @Column(name = "produto_nome", nullable = false, length = 300)
     @NotNull
     private String nome;
 
-    @Column(name = "produto_descricao", nullable = false)
+    @Column(name = "produto_descricao", nullable = false, length = 500)
     @NotNull
     private String descricao;
 
-    @Column(name = "produto_preco", nullable = false)
+    @Column(name = "produto_preco", nullable = false, length = 11)
     @NotNull
     private double preco;
 

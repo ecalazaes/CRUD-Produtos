@@ -19,10 +19,10 @@ public class Categoria implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "categoria_id", nullable = false, unique = true)
+    @Column(name = "categoria_id", nullable = false, unique = true, length = 11)
     private Long id;
 
-    @Column(name = "categoria_descricao", nullable = false)
+    @Column(name = "categoria_descricao", nullable = false, length = 300)
     @NotNull
     private String descricao;
 

@@ -42,6 +42,5 @@ public class Instancias implements CommandLineRunner {
         categoria2.getProdutos().addAll((Arrays.asList(produto4, produto5)));
 
         categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2));
-
     }
 }

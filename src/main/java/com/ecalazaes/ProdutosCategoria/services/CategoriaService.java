@@ -3,18 +3,14 @@ package com.ecalazaes.ProdutosCategoria.services;
 import com.ecalazaes.ProdutosCategoria.entities.Categoria;
 import com.ecalazaes.ProdutosCategoria.repositories.CategoriaRepository;
 import com.ecalazaes.ProdutosCategoria.services.exception.ObjectNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class CategoriaService {
 
-    private CategoriaRepository categoriaRepository;
+    private final CategoriaRepository categoriaRepository;
 
     public CategoriaService(CategoriaRepository categoriaRepository) {
         this.categoriaRepository = categoriaRepository;
