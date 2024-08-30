@@ -61,8 +61,7 @@ O projeto segue uma arquitetura tradicional em camadas:
     "nome": "Categoria 2"
     }
   ]
-
-
+  
 ## Banco de Dados H2
 A aplicação utiliza o banco de dados em memória H2 para testes. Você pode acessar a interface web do H2 para inspecionar as tabelas e dados persistidos.
 
