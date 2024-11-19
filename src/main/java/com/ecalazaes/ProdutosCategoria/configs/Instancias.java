@@ -23,9 +23,6 @@ public class Instancias implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        produtoRepository.deleteAll();
-        categoriaRepository.deleteAll();
-
         Categoria categoria1 = new Categoria(null, "Eletrônico");
         Categoria categoria2 = new Categoria(null, "Roupas");
 

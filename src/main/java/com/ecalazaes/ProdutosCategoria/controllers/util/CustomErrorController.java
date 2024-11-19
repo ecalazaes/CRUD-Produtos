@@ -1,5 +1,6 @@
 package com.ecalazaes.ProdutosCategoria.controllers.util;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
+@Hidden
 public class CustomErrorController implements ErrorController {
 
     @RequestMapping("/error")
